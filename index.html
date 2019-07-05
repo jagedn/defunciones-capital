@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Que mes morirás</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Defunciones por capital y mes</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Qué mes morirás</h1>
+        <p class="lead">Qué mes elige la gente para morir según provincias</p>
+        <br/>
+        <br/>
+        <div>
+            Donde vives:<select id="provincias">
+                <option value=-1>Elige</option>
+            </select>
+        </div>
+        <br/>
+        <br/>
+        <h3 id="result">&nbsp;</h3>
+        <br/>
+        <div>
+            <table id="table"  class="table">
+                <thead>
+                <tr>
+                    <th> Enero </th>
+                    <th> Febrero </th>
+                    <th> Marzo </th>
+                    <th> Abril </th>
+                    <th> Mayo </th>
+                    <th> Junio </th>
+                    <th> Julio </th>
+                    <th> Agosto </th>
+                    <th> Septiembre </th>
+                    <th> Octubre </th>
+                    <th> Noviembre </th>
+                    <th> Diciembre </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td id="Enero"></td>
+                    <td id="Febrero"></td>
+                    <td id="Marzo"></td>
+                    <td id="Abril"></td>
+                    <td id="Mayo"></td>
+                    <td id="Junio"></td>
+                    <td id="Julio"></td>
+                    <td id="Agosto"></td>
+                    <td id="Septiembre"></td>
+                    <td id="Octubre"></td>
+                    <td id="Noviembre"></td>
+                    <td id="Diciembre"></td>
+                </tr>
+                </tbody>                
+            </table>
+        </div>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>    
+    <script src="bootstrap.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            var provincias = [];
+            var success = function(json){
+                $.each(json, function(i, field){                  
+                    var fields = field.Nombre.split(',');
+                    if( fields[0] == 'Total')
+                        return;
+                    if( fields[1].trim() == 'Total')
+                        return;
+                    var p = fields[0];
+                    var mes = fields[1].trim();
+                    var arr = provincias[p] || [];
+                    arr[mes] = field.Data[0].Valor
+                    provincias[p] = arr
+                });
+                for(var provincia in provincias){                    
+                    $('#provincias').append($('<option>').text(provincia).val(provincia));
+                };
+            };      
+            $("#provincias").change(function(){
+                $( "select option:selected" ).each(function() {
+                    var provincia = $(this).text()
+                    var arr = provincias[provincia];                    
+                    var maxMes = 'Enero'
+                    var max = arr[maxMes]
+                    for(var mes in arr){
+                        if( arr[mes] > arr[maxMes]){
+                            max = arr[mes]
+                            maxMes = mes;
+                        }
+                        $('#'+mes).text(arr[mes])
+                    }
+                    console.log(maxMes+" "+arr[maxMes])
+                    $('#result').text("Tienes mas posibilidades de morir en "+maxMes)
+                });                
+            })
+            $.ajax({
+                dataType: "json",
+                url: "http://servicios.ine.es/wstempus/js/es/DATOS_TABLA/t20/e301/provi/02006.px?tip=AM",
+                success: success
+            });
+        })
+    </script>
+  </body>
+</html>
