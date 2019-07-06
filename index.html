@@ -29,17 +29,30 @@
         <h1 class="cover-heading">Qué mes morirás</h1>
         <p class="lead">Qué mes elige la gente para morir según provincias</p>
         <br/>
-        <br/>
-        <div>
+        <div class="row">
+          <div class="col-sm">
             Donde vives:<select id="provincias">
                 <option value=-1>Elige</option>
             </select>
+          </div>
         </div>
-        <br/>
-        <br/>
-        <h3 id="result">&nbsp;</h3>
-        <br/>
-        <div>
+        <div class="row">
+            <div class="col-sm">
+              <h3 id="result">&nbsp;</h3>
+            </div>
+        </div>  
+        <div class="row">
+          <div class="col-sm">
+            <h3 id="result">&nbsp;</h3>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+              <h3 id="result">&nbsp;</h3>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-sm">
             <table id="table"  class="table">
                 <thead>
                 <tr>
@@ -74,11 +87,13 @@
                 </tr>
                 </tbody>                
             </table>
+            </div>
         </div>
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
+          <p>Fuente datos: https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-capital-de-residencia-del-fallecido-y-mes-nacional-movimiento-natural-de-la-poblacion-resultados-provisionales-identificador-api-t20-e301-provi-l0-02006-px</p>
           <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
         </div>
       </footer>
@@ -124,7 +139,7 @@
                         $('#'+mes).text(arr[mes])
                     }
                     console.log(maxMes+" "+arr[maxMes])
-                    $('#result').text("Tienes mas posibilidades de morir en "+maxMes)
+                    $('#result').text("Tienes más posibilidades de morir en "+maxMes)
                 });                
             })
             $.ajax({
