@@ -9,91 +9,120 @@
     <title>Que mes morirás</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="cover.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
   </head>
 
-  <body class="text-center">
+  <body>
 
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Defunciones por capital y mes</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-          </nav>
-        </div>
-      </header>
-
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Qué mes morirás</h1>
-        <p class="lead">Qué mes elige la gente para morir según provincias</p>
-        <br/>
-        <div class="row">
-          <div class="col-sm">
-            Donde vives:<select id="provincias">
-                <option value=-1>Elige</option>
-            </select>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Jorge Aguilera jugando con datos abiertos.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://twitter.com/jagedn" class="text-white">Follow on Twitter</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="row">
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">            
+            <strong>Defunciones</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Defunciones por Capital de provincia</h1>
+          <p class="lead text-muted">Qué mes elige la gente para morir según donde viven.</p>          
+          <div class="row">
             <div class="col-sm">
-              <h3 id="result">&nbsp;</h3>
+              Donde vives:<select id="provincias">
+                  <option value=-1>Elige</option>
+              </select>
             </div>
-        </div>  
-        <div class="row">
-          <div class="col-sm">
-            <h3 id="result">&nbsp;</h3>
           </div>
         </div>
+      </section>
+
+      <div class="container">
+
         <div class="row">
-            <div class="col-sm">
-              <h3 id="result">&nbsp;</h3>
+          <div class="col-md-12">
+            <div class="card mb-12 box-shadow">
+              <div class="card-body">
+                <p class="card-text">
+                  <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>Tienes más posibilidades de morir en:</p>
+                    <hr>
+                    <h1 class="mb-0" id="result"></h1>
+                  </div>
+                </p>
             </div>
-        </div>  
-        <div class="row">
-            <div class="col-sm">
-            <table id="table"  class="table">
-                <thead>
-                <tr>
-                    <th> Enero </th>
-                    <th> Febrero </th>
-                    <th> Marzo </th>
-                    <th> Abril </th>
-                    <th> Mayo </th>
-                    <th> Junio </th>
-                    <th> Julio </th>
-                    <th> Agosto </th>
-                    <th> Septiembre </th>
-                    <th> Octubre </th>
-                    <th> Noviembre </th>
-                    <th> Diciembre </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td id="Enero"></td>
-                    <td id="Febrero"></td>
-                    <td id="Marzo"></td>
-                    <td id="Abril"></td>
-                    <td id="Mayo"></td>
-                    <td id="Junio"></td>
-                    <td id="Julio"></td>
-                    <td id="Agosto"></td>
-                    <td id="Septiembre"></td>
-                    <td id="Octubre"></td>
-                    <td id="Noviembre"></td>
-                    <td id="Diciembre"></td>
-                </tr>
-                </tbody>                
-            </table>
-            </div>
+          </div>
         </div>
-      </main>
+
+        <div class="table-responsive">
+          <table id="table"  class="table">
+              <thead>
+              <tr>
+                  <th> Enero </th>
+                  <th> Febrero </th>
+                  <th> Marzo </th>
+                  <th> Abril </th>
+                  <th> Mayo </th>
+                  <th> Junio </th>
+                  <th> Julio </th>
+                  <th> Agosto </th>
+                  <th> Septiembre </th>
+                  <th> Octubre </th>
+                  <th> Noviembre </th>
+                  <th> Diciembre </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td id="Enero"></td>
+                  <td id="Febrero"></td>
+                  <td id="Marzo"></td>
+                  <td id="Abril"></td>
+                  <td id="Mayo"></td>
+                  <td id="Junio"></td>
+                  <td id="Julio"></td>
+                  <td id="Agosto"></td>
+                  <td id="Septiembre"></td>
+                  <td id="Octubre"></td>
+                  <td id="Noviembre"></td>
+                  <td id="Diciembre"></td>
+              </tr>
+              </tbody>                
+          </table>
+          </div>
+          
+      </div>
+
+    </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Fuente datos: <a href="https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-capital-de-residencia-del-fallecido-y-mes-nacional-movimiento-natural-de-la-poblacion-resultados-provisionales-identificador-api-t20-e301-provi-l0-02006-px">
+          <p>Fuente datos: <a target="_blank"
+            href="https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-capital-de-residencia-del-fallecido-y-mes-nacional-movimiento-natural-de-la-poblacion-resultados-provisionales-identificador-api-t20-e301-provi-l0-02006-px">
             https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-capital-de-residencia-del-fallecido-y-mes-nacional-movimiento-natural-de-la-poblacion-resultados-provisionales-identificador-api-t20-e301-provi-l0-02006-px</a>
           </p>
           <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
@@ -105,8 +134,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>    
-    <script src="bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <script>
         $( document ).ready(function() {
             var provincias = [];
@@ -140,8 +171,8 @@
                         }
                         $('#'+mes).text(arr[mes])
                     }
+                    $('#result').text(maxMes)
                     console.log(maxMes+" "+arr[maxMes])
-                    $('#result').text("Tienes más posibilidades de morir en "+maxMes)
                 });                
             })
             $.ajax({
